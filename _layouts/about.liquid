@@ -56,6 +56,14 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
+    <!-- Preprints -->
+    {% if page.preprints %}
+      <h2>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">preprints</a>
+      </h2>
+      {% include preprints.liquid %}
+    {% endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>

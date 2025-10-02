@@ -1,6 +1,12 @@
 "Arxiv":
-  color: "#898989"
+  color: "#adb5bd"  # Medium gray - works in both themes
 
 "Neurips":
   url: https://nips.cc/
-  color: "#ff0000"
+  color: "#f8a5c2"  # Medium pink - visible in both themes
+
+"prob":
+  color: "#87ceeb"  # Medium blue - good contrast in both themes  
+
+"ml":
+  color: "#98d982"  # Medium green - balanced for both themes
