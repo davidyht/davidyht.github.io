@@ -78,9 +78,11 @@ ninja.data = [
       },
     {%- endfor -%}
   {%- endif -%}
+  {%- assign exclude_list = site.collections_in_search_exclude | default: '' -%}
   {%- for collection in site.collections -%}
-    {%- if collection.label != 'posts' -%}
-      {%- for item in collection.docs -%}
+      {%- if collection.label != 'posts' -%}
+        {%- unless exclude_list contains collection.label -%}
+        {%- for item in collection.docs -%}
         {
           {%- if item.inline -%}
             {%- assign title = item.content | newline_to_br | replace: "<br />", " " | replace: "<br/>", " " | strip_html | strip_newlines | escape | strip -%}
@@ -98,6 +100,7 @@ ninja.data = [
           {%- endunless -%}
         },
       {%- endfor -%}
+      {%- endunless -%}
     {%- endif -%}
   {%- endfor -%}
   {%- if site.socials_in_search -%}
