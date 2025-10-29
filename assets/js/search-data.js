@@ -16,12 +16,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/research/";
           },
-        },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather.html";
-            },},{id: "news-joining-ucla-sparkles",
+        },{id: "news-joining-ucla-sparkles",
           title: 'Joining UCLA :sparkles:',
           description: "",
           section: "News",},{
