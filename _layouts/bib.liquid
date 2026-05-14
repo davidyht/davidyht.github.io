@@ -50,7 +50,10 @@
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     {% if entry.tldr %}
-      <div class="tldr">{{ entry.tldr }}</div>
+      <details class="tldr">
+        <summary>TLDR</summary>
+        <p>{{ entry.tldr }}</p>
+      </details>
     {% endif %}
     <!-- Author -->
     <div class="author">

@@ -792,10 +792,56 @@ footer.sticky-bottom {
       }
 
       .tldr {
-        color: var(--global-text-color-light);
-        font-size: 0.9rem;
+        margin: 0.15rem 0 0.12rem;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 0.82rem;
         line-height: 1.35;
-        margin-bottom: 0.18rem;
+
+        summary {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.25rem;
+          color: var(--global-text-color-light);
+          border: 1px solid var(--global-divider-color);
+          border-radius: 0.2rem;
+          padding: 0.05rem 0.38rem;
+          cursor: pointer;
+          user-select: none;
+
+          &::before {
+            content: "+";
+            color: var(--global-theme-color);
+            font-weight: 600;
+          }
+
+          &::-webkit-details-marker {
+            display: none;
+          }
+
+          &:hover {
+            color: var(--global-theme-color);
+            border-color: var(--global-theme-color);
+            text-decoration: none;
+          }
+        }
+
+        &[open] summary {
+          color: var(--global-theme-color);
+          border-color: var(--global-theme-color);
+
+          &::before {
+            content: "-";
+          }
+        }
+
+        p {
+          color: var(--global-text-color-light);
+          margin: 0.35rem 0 0;
+          padding: 0.45rem 0.6rem;
+          border-left: 2px solid var(--global-theme-color);
+          background-color: var(--global-code-bg-color);
+          border-radius: 0.2rem;
+        }
       }
 
       .author {
