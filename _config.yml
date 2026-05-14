@@ -50,7 +50,7 @@ footer_fixed: true
 search_enabled: true
 socials_in_search: true
 posts_in_search: true
-collections_in_search_exclude: ["books"]
+collections_in_search_exclude: []
 bib_search: true
 
 # Dimensions
@@ -126,8 +126,6 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
-  books:
-    output: true
   news:
     defaults:
       layout: post
@@ -163,6 +161,7 @@ exclude:
   - docker-compose.yml
   - docker-compose-slim.yml
   - FAQ.md
+  - AGENTS.md
   - Gemfile
   - Gemfile.lock
   - INSTALL.md
@@ -170,18 +169,10 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
-  - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
   - readme_preview/
   - vendor
-  - _pages/teaching.md
-  - _pages/books.md
-  - _pages/profiles.md
-  - _pages/repositories.md
-  - _includes/repository/
-  - _pages/dropdown.md
-  - _pages/cv.md
 keep_files:
   - CNAME
   - .nojekyll
@@ -231,14 +222,6 @@ jekyll-minifier:
 terser:
   compress:
     drop_console: true
-
-# -----------------------------------------------------------------------------
-# Jekyll Archives
-# -----------------------------------------------------------------------------
-
-jekyll-archives:
-  books:
-    enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
@@ -600,25 +583,3 @@ third_party_libraries:
       css: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.css"
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
-
-# -----------------------------------------------------------------------------
-# Get external JSON data
-# -----------------------------------------------------------------------------
-
-jekyll_get_json:
-  - data: resume
-    json: assets/json/resume.json # it can also be an url
-
-jsonresume:
-  - basics
-  - work
-  - education
-  - publications
-  - projects
-  - volunteer
-  - awards
-  - certificates
-  - skills
-  - languages
-  - interests
-  - references
