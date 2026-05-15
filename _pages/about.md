@@ -8,9 +8,9 @@ profile:
   image: self_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info:
-selected_papers: true # includes a list of papers marked as "selected={true}"
-preprints: true # includes a list of papers marked as "preprint={true}"
-social: true # includes social icons at the bottom of the page
+featured_papers: true # randomly samples papers from the research bibliography
+preprints: false # includes a list of papers marked as "preprint={true}"
+social: false # social icons are shown in the top navbar
 
 announcements:
   enabled: true # includes a list of news items

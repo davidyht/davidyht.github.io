@@ -1,31 +1,18 @@
 ---
 ---
-<div class="row">
+{% assign publication_tags = entry.abbr | downcase %}
+{% if entry.keywords %}
+  {% assign keyword_tags = entry.keywords | downcase | replace: ',', ' ' %}
+  {% assign publication_tags = publication_tags | append: ' ' | append: keyword_tags %}
+{% endif %}
+
+<div
+  class="row publication-card"
+  data-publication-tags="{{ publication_tags | strip | escape }}"
+>
   {% if site.enable_publication_thumbnails %}
-    <div class="col col-sm-2 abbr">
-      {%- if entry.abbr -%}
-        {%- if site.data.venues[entry.abbr] -%}
-          {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
-          {%- endif -%}
-          <abbr
-            class="badge rounded w-100"
-            {% if venue_style %}
-              {{ venue_style }}
-            {% endif -%}
-          >
-            {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
-            {% else %}
-              <div>{{- entry.abbr -}}</div>
-            {% endif %}
-          </abbr>
-        {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
-        {% endif %}
-      {% endif %}
-      {% if entry.preview %}
+    {% if entry.preview %}
+      <div class="col col-sm-2 abbr">
         {% if entry.preview contains '://' %}
           <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
         {% else %}
@@ -41,14 +28,16 @@
             alt=entry.preview
           %}
         {% endif %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
+  <div id="{{ entry.key }}" class="publication-content {% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+    <div class="publication-heading">
+      <div class="title">{{ entry.title }}</div>
+    </div>
     {% if entry.tldr %}
       <details class="tldr">
         <summary>TLDR</summary>
@@ -190,6 +179,17 @@
     <div class="periodical">
       {{ entry.note | strip }}
     </div>
+    {% if entry.keywords %}
+      <div class="publication-keywords" aria-label="Publication topics">
+        {% assign keyword_list = entry.keywords | split: ',' %}
+        {% for keyword in keyword_list %}
+          {% assign keyword_text = keyword | strip %}
+          {% if keyword_text != blank %}
+            <span>{{ keyword_text }}</span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
 
     <!-- Links/Buttons -->
     <div class="links">
@@ -205,10 +205,10 @@
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
       {% endif %}
       {% if entry.arxiv %}
-        <a href="http://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
+        <a href="https://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
       {% endif %}
       {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
+        <a class="bibtex btn btn-sm z-depth-0" role="button">BibTeX</a>
       {% endif %}
       {% if entry.html %}
         {% if entry.html contains '://' %}
@@ -223,6 +223,8 @@
         {% else %}
           <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
         {% endif %}
+      {% elsif entry.arxiv %}
+        <a href="https://arxiv.org/pdf/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
       {% endif %}
       {% if entry.supp %}
         {% if entry.supp contains '://' %}

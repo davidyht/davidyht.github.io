@@ -306,26 +306,33 @@ ul.task-list input[type="checkbox"] {
   }
 
   .navbar-brand.social {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
     padding-bottom: 0;
     padding-top: 0;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
+    line-height: 1;
 
     a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+
       img {
-        width: 1.7rem;
-        height: 1.7rem;
-        margin-bottom: 0.5rem;
-        // margin: 0.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-bottom: 0;
       }
 
       svg {
-        width: 1.7rem;
-        height: 1.7rem;
-        margin-bottom: 0.5rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        margin-bottom: 0;
 
         image {
-          width: 1.7rem;
-          height: 1.7rem;
+          width: 1.75rem;
+          height: 1.75rem;
         }
       }
 
@@ -694,6 +701,171 @@ footer.sticky-bottom {
 
 // Publications
 
+.featured-papers-block {
+  margin-top: 2rem;
+
+  > h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0;
+    font-size: 1.45rem;
+    line-height: 1.2;
+
+    a {
+      white-space: nowrap;
+    }
+
+    &::after {
+      content: "";
+      flex: 1 1 auto;
+      height: 1px;
+      background: linear-gradient(90deg, var(--global-theme-color), transparent);
+      opacity: 0.35;
+    }
+  }
+
+  .featured-papers-shuffle {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    padding: 0;
+    color: var(--global-text-color-light);
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.72rem;
+    line-height: 1;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease,
+      transform 0.15s ease;
+
+    &:hover {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      transform: rotate(12deg);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--global-theme-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .featured-papers {
+    margin-top: 0.85rem;
+  }
+
+  .featured-papers:not(.featured-papers-ready) ol.bibliography > li:nth-child(n + 2) {
+    display: none;
+  }
+
+  .featured-papers ol.bibliography li {
+    margin-bottom: 0.65rem;
+
+    > .row {
+      padding: 0.8rem 0.9rem;
+      border-color: rgba(0, 0, 0, 0.08);
+      border-left: 3px solid var(--global-theme-color);
+      box-shadow: none;
+    }
+
+    .title {
+      font-size: 0.98rem;
+    }
+
+    .author,
+    .periodical {
+      font-size: 0.88rem;
+    }
+
+    .publication-keywords {
+      gap: 0.22rem;
+
+      span {
+        border: 0;
+        padding: 0.06rem 0.38rem;
+      }
+    }
+  }
+}
+
+.publication-filter-panel {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  background-color: var(--global-card-bg-color);
+  padding: 0.85rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.publication-filter-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--global-text-color-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.publication-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+
+  button {
+    color: var(--global-text-color);
+    background-color: transparent;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    padding: 0.28rem 0.72rem;
+    line-height: 1.35;
+    cursor: pointer;
+    transition:
+      border-color 0.15s ease,
+      color 0.15s ease,
+      background-color 0.15s ease;
+
+    &:hover,
+    &.active {
+      color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      background-color: var(--global-code-bg-color);
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .publication-filter-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .publications ol.bibliography li {
+    > .row {
+      padding: 0.85rem;
+    }
+
+    .publication-content {
+      padding-left: 0;
+    }
+
+    .publication-heading {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+  }
+}
+
 .publications {
   margin-top: 1.25rem;
 
@@ -728,35 +900,47 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
 
       > .row {
         margin-left: 0;
         margin-right: 0;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid var(--global-divider-color);
+        padding: 0.95rem;
+        border: 1px solid var(--global-divider-color);
+        border-radius: 8px;
+        background-color: var(--global-card-bg-color);
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease,
+          transform 0.15s ease;
+
+        &:hover {
+          border-color: var(--global-theme-color);
+          box-shadow: 0 0.35rem 1rem rgba(0, 0, 0, 0.055);
+          transform: translateY(-1px);
+        }
       }
 
       .preview {
       }
 
       .abbr {
-        flex: 0 0 5.25rem;
-        max-width: 5.25rem;
+        flex: 0 0 5.75rem;
+        max-width: 5.75rem;
         padding-left: 0;
-        padding-right: 0.75rem;
+        padding-right: 1rem;
         margin-bottom: 0;
 
         abbr {
           display: inline-block;
-          background-color: transparent;
-          border: 1px solid var(--global-divider-color);
+          background-color: var(--global-code-bg-color);
+          border: 1px solid transparent;
           margin-bottom: 0;
           color: var(--global-text-color) !important;
-          font-weight: 500;
+          font-weight: 600;
           font-size: 0.68rem;
           line-height: 1.2;
-          padding: 0.22rem 0.35rem;
+          padding: 0.28rem 0.38rem;
           border-radius: 0.25rem;
           text-transform: uppercase;
           letter-spacing: 0;
@@ -774,7 +958,7 @@ footer.sticky-bottom {
 
           &:hover {
             border-color: var(--global-text-color);
-            background-color: var(--global-bg-color-light);
+            background-color: var(--global-card-bg-color);
             opacity: 1;
           }
         }
@@ -783,6 +967,17 @@ footer.sticky-bottom {
           color: var(--global-theme-color) !important;
           border: 1px solid var(--global-theme-color);
         }
+      }
+
+      .publication-content {
+        padding-left: 0.35rem;
+      }
+
+      .publication-heading {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.75rem;
       }
 
       .title {
@@ -877,17 +1072,36 @@ footer.sticky-bottom {
         line-height: 1.3;
       }
 
+      .publication-keywords {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.28rem;
+        margin-top: 0.32rem;
+
+        span {
+          color: var(--global-text-color-light);
+          background-color: var(--global-code-bg-color);
+          border: 1px solid var(--global-divider-color);
+          border-radius: 999px;
+          padding: 0.08rem 0.45rem;
+          font-size: 0.72rem;
+          line-height: 1.35;
+        }
+      }
+
       .links {
-        margin-top: 0.25rem;
+        margin-top: 0.42rem;
 
         a.btn {
           color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding: 0.12rem 0.48rem;
+          border: 1px solid var(--global-divider-color);
+          border-radius: 999px;
+          padding: 0.16rem 0.54rem;
           margin-left: 0;
           margin-right: 0.25rem;
           margin-bottom: 0.15rem;
           line-height: 1.35;
+          background-color: transparent;
 
           &:hover {
             color: var(--global-theme-color);
@@ -963,20 +1177,16 @@ footer.sticky-bottom {
       padding-right: 0;
     }
 
-    li:last-child > .row {
-      border-bottom: 0;
-    }
-
     @media (max-width: 575px) {
       li > .row {
-        padding: 0.85rem 0;
+        padding: 0.85rem;
       }
 
       li .abbr {
         flex: 0 0 auto;
         max-width: none;
         padding-right: 0;
-        margin-bottom: 0.35rem;
+        margin-bottom: 0.5rem;
       }
     }
 
@@ -1048,6 +1258,10 @@ html.transition *:after {
       }
     }
   }
+}
+
+.publication-topic-filtered {
+  display: none !important;
 }
 
 progress {
