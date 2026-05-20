@@ -11,6 +11,7 @@ profile:
 featured_papers: true # randomly samples papers from the research bibliography
 preprints: false # includes a list of papers marked as "preprint={true}"
 social: false # social icons are shown in the top navbar
+typewriter: true
 
 announcements:
   enabled: false # includes a list of news items
@@ -18,7 +19,9 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-<p style="font-size: 1.35rem; font-weight: 500; margin-bottom: 0.75rem;">Hello — I'm Huitao. 👋</p>
+<p class="intro-typewriter" aria-label="Hello, I am Huitao.">
+  <span data-typewriter-text="Hello, I am Huitao.">Hello, I am Huitao.</span>
+</p>
 
 I study foundation models, focusing on interpreting their behavior through theory and controlled experiments. I am also passionate about topics in reinforcement learning and probability.
 
