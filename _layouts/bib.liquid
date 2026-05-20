@@ -70,7 +70,7 @@
       {% include hook/bib.liquid %}
     {% endif %}
     {% assign entrytype_text = entrytype | strip_html | strip %}
-    {% if entrytype_text != "" %}
+    {% if entrytype_text != '' %}
       {% capture periodical %}{{ entrytype }}{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
     {% elsif entry.archivePrefix or entry.arxiv or entry.eprint %}
       {% capture periodical %}arXiv preprint{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
