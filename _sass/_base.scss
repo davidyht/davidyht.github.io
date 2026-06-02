@@ -35,6 +35,23 @@ table {
   }
 }
 
+.post-title,
+.intro-typewriter,
+.profile .more-info,
+.navbar .navbar-brand.title,
+.navbar .navbar-nav .nav-item .nav-link,
+.publication-filter-header,
+.publication-filter-buttons button,
+.featured-papers-block > h2,
+.publications h2.bibliography,
+.publications ol.bibliography li .abbr abbr,
+.publications ol.bibliography li .publication-venue,
+.publications ol.bibliography li .tldr,
+.publications ol.bibliography li .publication-keywords span,
+.publications ol.bibliography li .links a.btn {
+  font-family: var(--global-mono-accent-font);
+}
+
 a,
 table.table a {
   color: var(--global-theme-color);
@@ -198,7 +215,6 @@ ul.task-list input[type="checkbox"] {
   .more-info {
     margin-bottom: 5px;
     margin-top: 5px;
-    font-family: monospace;
 
     p {
       display: inline-block;
@@ -242,10 +258,12 @@ ul.task-list input[type="checkbox"] {
 }
 
 .intro-typewriter {
-  min-height: 2rem;
-  margin-bottom: 0.75rem;
-  font-size: 1.35rem;
+  min-height: 1.65rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.85rem;
+  font-size: 1.14rem;
   font-weight: 500;
+  line-height: 1.45;
 
   [data-typewriter-text] {
     display: inline-block;
@@ -330,6 +348,9 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-nav .nav-item .nav-link {
     color: var(--global-text-color);
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0;
 
     &:hover {
       color: var(--global-hover-color);
@@ -1056,13 +1077,13 @@ footer.sticky-bottom {
         padding: 0.08rem 0.38rem;
         font-size: 0.68rem;
         font-weight: 700;
+        letter-spacing: 0;
         line-height: 1.1;
         text-transform: uppercase;
       }
 
       .tldr {
         margin: 0.35rem 0 0.12rem;
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
         font-size: 0.78rem;
         line-height: 1.35;
 
@@ -1128,7 +1149,7 @@ footer.sticky-bottom {
           }
         }
 
-        > em {
+        .self-author {
           color: var(--global-text-color);
           border-bottom: 1px solid var(--global-theme-color);
           font-style: normal;
