@@ -264,6 +264,8 @@ ul.task-list input[type="checkbox"] {
   font-size: 1.14rem;
   font-weight: 500;
   line-height: 1.45;
+  max-width: 24ch;
+  text-wrap: balance;
 
   [data-typewriter-text] {
     display: inline-block;
@@ -284,6 +286,13 @@ ul.task-list input[type="checkbox"] {
       animation-duration: 1.15s;
       opacity: 0.75;
     }
+  }
+}
+
+.post article > .clearfix {
+  > p:not(.intro-typewriter) {
+    max-width: 66ch;
+    text-wrap: pretty;
   }
 }
 
