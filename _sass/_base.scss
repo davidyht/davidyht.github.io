@@ -45,7 +45,6 @@ table {
 .featured-papers-block > h2,
 .publications h2.bibliography,
 .publications ol.bibliography li .abbr abbr,
-.publications ol.bibliography li .publication-venue,
 .publications ol.bibliography li .tldr,
 .publications ol.bibliography li .publication-keywords span,
 .publications ol.bibliography li .links a.btn {
@@ -1080,22 +1079,6 @@ footer.sticky-bottom {
         align-items: center;
         gap: 0.4rem;
         margin-bottom: 0.22rem;
-      }
-
-      .publication-venue {
-        display: inline-flex;
-        align-items: center;
-        min-height: 1.25rem;
-        color: var(--global-theme-color);
-        background-color: var(--global-code-bg-color);
-        border: 1px solid var(--global-divider-color);
-        border-radius: 0.2rem;
-        padding: 0.08rem 0.38rem;
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0;
-        line-height: 1.1;
-        text-transform: uppercase;
       }
 
       .tldr {

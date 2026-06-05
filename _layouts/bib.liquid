@@ -1,9 +1,9 @@
 ---
 ---
-{% assign publication_tags = entry.abbr | downcase %}
+{% assign publication_tags = '' %}
 {% if entry.keywords %}
   {% assign keyword_tags = entry.keywords | downcase | replace: ',', ' ' %}
-  {% assign publication_tags = publication_tags | append: ' ' | append: keyword_tags %}
+  {% assign publication_tags = keyword_tags %}
 {% endif %}
 
 <div
@@ -72,15 +72,14 @@
     {% assign entrytype_text = entrytype | strip_html | strip %}
     {% if entrytype_text != '' %}
       {% capture periodical %}{{ entrytype }}{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
+    {% elsif entry.venue %}
+      {% capture periodical %}{{ entry.venue }}{% if entrydate != "" %} {{ entrydate }}{% endif %}{% endcapture %}
     {% elsif entry.archivePrefix or entry.arxiv or entry.eprint %}
       {% capture periodical %}arXiv preprint{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
     {% else %}
       {% capture periodical %}{{ entrydate }}{% endcapture %}
     {% endif %}
     <div class="publication-meta">
-      {% if entry.abbr %}
-        <span class="publication-venue">{{ entry.abbr }}</span>
-      {% endif %}
       {% assign periodical_text = periodical | strip %}
       {% if periodical_text != blank %}
         <span class="periodical">{{ periodical_text }}</span>
