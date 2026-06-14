@@ -180,14 +180,14 @@
           aria-expanded="false"
           title="click to view {{ more_authors_hide }}"
           onclick="
-              var element = $(this);
-              element.attr('title', '');
-              var collapsed = element.find('[data-more-authors-collapsed]');
-              var expanded = element.find('[data-more-authors-expanded]');
-              var isExpanded = element.attr('aria-expanded') == 'true';
-              element.attr('aria-expanded', isExpanded ? 'false' : 'true');
-              collapsed.prop('hidden', !isExpanded);
-              expanded.prop('hidden', isExpanded);
+            var element = $(this);
+            element.attr('title', '');
+            var collapsed = element.find('[data-more-authors-collapsed]');
+            var expanded = element.find('[data-more-authors-expanded]');
+            var isExpanded = element.attr('aria-expanded') == 'true';
+            element.attr('aria-expanded', isExpanded ? 'false' : 'true');
+            collapsed.prop('hidden', !isExpanded);
+            expanded.prop('hidden', isExpanded);
           "
           onkeydown="
             if (event.key == 'Enter' || event.key == ' ') {
