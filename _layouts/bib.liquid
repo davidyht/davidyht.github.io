@@ -7,7 +7,7 @@
 {% endif %}
 
 <div
-  class="row publication-card"
+  class="row publication-card{% if entry.selected %} publication-selected{% endif %}"
   data-publication-tags="{{ publication_tags | strip | escape }}"
 >
   {% if site.enable_publication_thumbnails %}
@@ -35,8 +35,24 @@
   <!-- Entry bib key -->
   <div id="{{ entry.key }}" class="publication-content {% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
     <!-- Title -->
+    {% assign title_url = entry.website %}
+    {% if title_url == blank %}
+      {% assign title_url = entry.url %}
+    {% endif %}
+    {% if title_url == blank and entry.arxiv %}
+      {% capture title_url %}https://arxiv.org/abs/{{ entry.arxiv }}{% endcapture %}
+    {% endif %}
+    {% if title_url == blank and entry.doi %}
+      {% capture title_url %}https://doi.org/{{ entry.doi }}{% endcapture %}
+    {% endif %}
     <div class="publication-heading">
-      <div class="title">{{ entry.title }}</div>
+      <div class="title">
+        {% if title_url != blank %}
+          <a href="{{ title_url }}">{{ entry.title }}</a>
+        {% else %}
+          {{ entry.title }}
+        {% endif %}
+      </div>
     </div>
 
     <!-- Journal/Book title and date -->
@@ -73,22 +89,12 @@
     {% if entrytype_text != '' %}
       {% capture periodical %}{{ entrytype }}{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
     {% elsif entry.venue %}
-      {% capture periodical %}{{ entry.venue }}{% if entrydate != "" %} {{ entrydate }}{% endif %}{% endcapture %}
+      {% capture periodical %}<em>{{ entry.venue }}</em>{% if entrydate != "" %}, {{ entrydate }}{% endif %}{% endcapture %}
     {% elsif entry.archivePrefix or entry.arxiv or entry.eprint %}
-      {% capture periodical %}arXiv preprint{% if entrydate != "" %}, {% endif %}{{ entrydate }}{% endcapture %}
+      {% capture periodical %}<em>arXiv</em>{% if entrydate != "" %}, {{ entrydate }}{% endif %}{% endcapture %}
     {% else %}
       {% capture periodical %}{{ entrydate }}{% endcapture %}
     {% endif %}
-    <div class="publication-meta">
-      {% assign periodical_text = periodical | strip %}
-      {% if periodical_text != blank %}
-        <span class="periodical">{{ periodical_text }}</span>
-      {% endif %}
-      {% assign note_text = entry.note | strip %}
-      {% if note_text != blank %}
-        <span class="periodical">{{ note_text }}</span>
-      {% endif %}
-    </div>
 
     <!-- Author -->
     <div class="author">
@@ -212,95 +218,91 @@
       {% endif %}
     </div>
 
-    {% if entry.tldr %}
-      <details class="tldr">
-        <summary>TLDR</summary>
-        <p>{{ entry.tldr }}</p>
-      </details>
-    {% endif %}
-    {% if entry.keywords %}
-      <div class="publication-keywords" aria-label="Publication topics">
-        {% assign keyword_list = entry.keywords | split: ',' %}
-        {% for keyword in keyword_list %}
-          {% assign keyword_text = keyword | strip %}
-          {% if keyword_text != blank %}
-            <span>{{ keyword_text }}</span>
-          {% endif %}
-        {% endfor %}
-      </div>
-    {% endif %}
+    <div class="publication-meta">
+      {% assign periodical_text = periodical | strip %}
+      {% if periodical_text != blank %}
+        <span class="periodical">{{ periodical_text }}</span>
+      {% endif %}
+      {% assign note_text = entry.note | strip %}
+      {% if note_text != blank %}
+        <span class="periodical">{{ note_text }}</span>
+      {% endif %}
+    </div>
 
-    <!-- Links/Buttons -->
+    <!-- Publication links -->
     <div class="links">
       {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
+        <a class="award publication-link" role="button">
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}Awarded{% endif -%}
         </a>
       {% endif %}
       {% if entry.abstract %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a>
+        <a class="abstract publication-link" role="button">abstract</a>
       {% endif %}
       {% if entry.doi %}
-        <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
+        <a href="https://doi.org/{{ entry.doi }}" class="publication-link">DOI</a>
       {% endif %}
       {% if entry.arxiv %}
-        <a href="https://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">arXiv</a>
-      {% endif %}
-      {% if entry.bibtex_show %}
-        <a class="bibtex btn btn-sm z-depth-0" role="button">BibTeX</a>
+        <a href="https://arxiv.org/abs/{{ entry.arxiv }}" class="publication-link">arXiv</a>
       {% endif %}
       {% if entry.html %}
         {% if entry.html contains '://' %}
-          <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          <a href="{{ entry.html }}" class="publication-link">HTML</a>
         {% else %}
-          <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>
+          <a href="{{ entry.html | prepend: '/assets/html/' | relative_url }}" class="publication-link">HTML</a>
         {% endif %}
       {% endif %}
       {% if entry.pdf %}
         {% if entry.pdf contains '://' %}
-          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+          <a href="{{ entry.pdf }}" class="publication-link">PDF</a>
         {% else %}
-          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="publication-link">PDF</a>
         {% endif %}
       {% elsif entry.arxiv %}
-        <a href="https://arxiv.org/pdf/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+        <a href="https://arxiv.org/pdf/{{ entry.arxiv }}" class="publication-link">PDF</a>
+      {% endif %}
+      {% if entry.bibtex_show %}
+        <a class="bibtex publication-link" role="button">BibTeX</a>
       {% endif %}
       {% if entry.supp %}
         {% if entry.supp contains '://' %}
-          <a href="{{ entry.supp }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          <a href="{{ entry.supp }}" class="publication-link">supplement</a>
         {% else %}
-          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Supp</a>
+          <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="publication-link">supplement</a>
         {% endif %}
       {% endif %}
       {% if entry.video and site.enable_video_embedding %}
-        <a class="abstract btn btn-sm z-depth-0" role="button">Video</a>
+        <a class="abstract publication-link" role="button">video</a>
       {% elsif entry.video %}
-        <a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>
+        <a href="{{ entry.video }}" class="publication-link">video</a>
       {% endif %}
       {% if entry.blog %}
-        <a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>
+        <a href="{{ entry.blog }}" class="publication-link">blog</a>
       {% endif %}
       {% if entry.code %}
-        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
+        <a href="{{ entry.code }}" class="publication-link">code</a>
       {% endif %}
       {% if entry.poster %}
         {% if entry.poster contains '://' %}
-          <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+          <a href="{{ entry.poster }}" class="publication-link">poster</a>
         {% else %}
-          <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
+          <a href="{{ entry.poster | prepend: '/assets/pdf/' | relative_url }}" class="publication-link">poster</a>
         {% endif %}
       {% endif %}
       {% if entry.slides %}
         {% if entry.slides contains '://' %}
-          <a href="{{ entry.slides }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ entry.slides }}" class="publication-link">slides</a>
         {% else %}
-          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
+          <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="publication-link">slides</a>
         {% endif %}
       {% endif %}
       {% if entry.website %}
-        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
+        <a href="{{ entry.website }}" class="publication-link">project page</a>
       {% endif %}
     </div>
+    {% if entry.tldr %}
+      <p class="publication-takeaway">{{ entry.tldr }}</p>
+    {% endif %}
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}
       {% if entry.altmetric and entry.altmetric != 'false' %}
