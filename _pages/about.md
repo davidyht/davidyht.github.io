@@ -28,6 +28,4 @@ I study foundation models, focusing on interpreting their behavior through theor
 I am currently a Master's student in Statistics at UCLA, advised by Prof. [Guang Cheng](http://www.stat.ucla.edu/~guangcheng/2.html).
 I completed my undergraduate degree in Mathematics & Applied Mathematics at Fudan University. I am grateful to Prof. [Guanting Chen](https://gtchen430.github.io/), Prof. [Andrea Zanette](https://azanette.com), and Prof. [Zengfeng Huang](https://zengfenghuang.github.io) for their mentorship and support.
 
-I am currently exploring new perspectives on distillation and continual learning, including approaches through model parameters and latent spaces. One motivation is that fitting a distribution only through the samples it produces may be suboptimal for inferring the structure of the distribution itself.
-
 Outside of academia, I enjoy hiking, biking, playing soccer, and diving into board games.
