@@ -8,7 +8,7 @@ profile:
   image: self_pic.jpg
   image_circular: true # crops the image to make it circular
   more_info:
-featured_papers: true # displays papers newest first from the research bibliography
+featured_papers: true # displays one paper at a time, cycling newest first
 preprints: false # includes a list of papers marked as "preprint={true}"
 social: false # social icons are shown in the top navbar
 typewriter: true
