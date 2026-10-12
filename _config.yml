@@ -50,7 +50,7 @@ footer_fixed: true
 search_enabled: true
 socials_in_search: true
 posts_in_search: true
-collections_in_search_exclude: []
+collections_in_search_exclude: [news]
 bib_search: true
 
 # Dimensions
