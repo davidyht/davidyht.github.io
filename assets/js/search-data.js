@@ -16,10 +16,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/research/";
           },
-        },{id: "news-joining-ucla-sparkles",
-          title: 'Joining UCLA :sparkles:',
-          description: "",
-          section: "News",},{
+        },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
