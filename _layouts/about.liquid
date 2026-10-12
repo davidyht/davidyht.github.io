@@ -89,7 +89,7 @@ layout: default
         <ul class="home-entries">
           {% for entry in page.teaching %}
             <li>
-              <span class="home-entry-label">[{{ entry.term }}, {{ entry.role }}]</span>
+              <strong class="home-entry-label">[{{ entry.term }}, {{ entry.role }}]</strong>
               <div>{{ entry.course }}: {{ entry.title }}, {{ entry.institution }}</div>
             </li>
           {% endfor %}
@@ -103,7 +103,7 @@ layout: default
         <ul class="home-entries">
           {% for entry in page.service %}
             <li>
-              <span class="home-entry-label">[{{ entry.role }}]</span>
+              <strong class="home-entry-label">[{{ entry.role }}]</strong>
               <div>{{ entry.venues }}</div>
             </li>
           {% endfor %}
