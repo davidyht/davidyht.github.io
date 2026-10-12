@@ -13,6 +13,22 @@ preprints: false # includes a list of papers marked as "preprint={true}"
 social: false # social icons are shown in the top navbar
 typewriter: true
 
+teaching:
+  - term: Fall 2026
+    course: STATS 400
+    title: Introduction to Probability Modeling
+    role: TA
+    institution: UCLA
+  - term: Spring 2026
+    course: STATS 12
+    title: Statistical Methods for Geography & Environmental Studies
+    role: TA
+    institution: UCLA
+
+service:
+  - role: Reviewer
+    venues: ICLR 2026
+
 announcements:
   enabled: false # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
