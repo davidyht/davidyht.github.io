@@ -786,12 +786,16 @@ footer.sticky-bottom {
   }
 }
 
+.about-page article > .clearfix > p:not(.intro-typewriter),
+.home-entries {
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
 .home-entries {
   list-style: none;
   padding: 0;
   margin: 0.8rem 0 0;
-  font-size: 0.92rem;
-  line-height: 1.5;
 
   > li {
     display: grid;
