@@ -257,31 +257,47 @@ ul.task-list input[type="checkbox"] {
   min-height: 1.65rem;
   margin-top: 0.15rem;
   margin-bottom: 0.85rem;
-  font-size: 1.14rem;
+  font-size: 0.96rem;
   font-weight: 500;
   line-height: 1.45;
-  max-width: 24ch;
-  text-wrap: balance;
+  overflow-wrap: anywhere;
+  cursor: text;
 
-  [data-typewriter-text] {
+  .intro-input {
+    padding-inline: 0.1em;
+    color: var(--global-text-color-light);
+    font-style: italic;
+    font-weight: 400;
+    white-space: pre-wrap;
+    outline: none;
+    caret-color: var(--global-theme-color);
+  }
+
+  .intro-greeting::after {
+    content: "";
     display: inline-block;
-    min-width: 17ch;
+    width: 0.08em;
+    height: 1em;
+    margin-left: 0.12em;
+    vertical-align: -0.12em;
+    background: var(--global-theme-color);
+    animation: intro-caret-blink 0.9s steps(1, end) infinite;
+  }
 
-    &::after {
-      content: "";
-      display: inline-block;
-      width: 0.08em;
-      height: 1em;
-      margin-left: 0.12em;
-      vertical-align: -0.12em;
-      background: var(--global-theme-color);
-      animation: typewriter-caret 0.9s steps(1, end) infinite;
-    }
+  &:focus-within .intro-greeting::after {
+    visibility: hidden;
+  }
+}
 
-    &.is-complete::after {
-      animation-duration: 1.15s;
-      opacity: 0.75;
-    }
+@keyframes intro-caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-typewriter .intro-greeting::after {
+    animation: none;
   }
 }
 
@@ -289,19 +305,6 @@ ul.task-list input[type="checkbox"] {
   > p:not(.intro-typewriter) {
     max-width: 66ch;
     text-wrap: pretty;
-  }
-}
-
-@keyframes typewriter-caret {
-  50% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .intro-typewriter [data-typewriter-text]::after {
-    animation: none;
-    opacity: 0;
   }
 }
 

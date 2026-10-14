@@ -35,9 +35,10 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-<p class="intro-typewriter" aria-label="Hello, I am Huitao.">
-  <span data-typewriter-text="Hello, I am Huitao.">Hello, I am Huitao.</span>
-</p>
+<div class="intro-typewriter" data-intro-editor>
+  <span class="intro-greeting">Hi, I am Huitao.</span>
+  <span class="intro-input" contenteditable="plaintext-only" role="textbox" aria-label="Continue the greeting" aria-multiline="true" spellcheck="true">[Thinking...]</span>
+</div>
 
 I study foundation models, focusing on interpreting their behavior through theory and controlled experiments. I am also passionate about topics in reinforcement learning and probability.
 
