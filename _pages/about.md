@@ -43,6 +43,6 @@ announcements:
 I study foundation models, focusing on interpreting their behavior through theory and controlled experiments. I am also passionate about topics in reinforcement learning and probability.
 
 I am currently a Master's student in Statistics at UCLA.
-I completed my undergraduate degree in Mathematics & Applied Mathematics at Fudan University. I am grateful to Prof. [Guanting Chen](https://gtchen430.github.io/), Prof. [Andrea Zanette](https://azanette.com), and Prof. [Zengfeng Huang](https://zengfenghuang.github.io) for their mentorship and support.
+I completed my undergraduate degree in Mathematics & Applied Mathematics at Fudan University. I am grateful to Prof. [Guang Cheng](http://www.stat.ucla.edu/~guangcheng/2.html), Prof. [Guanting Chen](https://gtchen430.github.io/), and Prof. [Andrea Zanette](https://azanette.com) for their mentorship and support.
 
 Outside of academia, I enjoy hiking, biking, playing soccer, and diving into board games.
