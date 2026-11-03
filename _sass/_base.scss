@@ -254,9 +254,8 @@ ul.task-list input[type="checkbox"] {
 }
 
 .intro-typewriter {
-  min-height: 1.65rem;
-  margin-top: 0.15rem;
-  margin-bottom: 0.85rem;
+  margin-top: 0.55rem;
+  text-align: center;
   font-size: 0.96rem;
   font-weight: 500;
   line-height: 1.45;
@@ -271,33 +270,6 @@ ul.task-list input[type="checkbox"] {
     white-space: pre-wrap;
     outline: none;
     caret-color: var(--global-theme-color);
-  }
-
-  .intro-greeting::after {
-    content: "";
-    display: inline-block;
-    width: 0.08em;
-    height: 1em;
-    margin-left: 0.12em;
-    vertical-align: -0.12em;
-    background: var(--global-theme-color);
-    animation: intro-caret-blink 0.9s steps(1, end) infinite;
-  }
-
-  &:focus-within .intro-greeting::after {
-    visibility: hidden;
-  }
-}
-
-@keyframes intro-caret-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .intro-typewriter .intro-greeting::after {
-    animation: none;
   }
 }
 

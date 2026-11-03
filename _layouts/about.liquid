@@ -32,6 +32,19 @@ layout: default
             cache_bust=true
           %}
         {% endif %}
+        {% if page.typewriter %}
+          <div class="intro-typewriter" data-intro-editor>
+            <span
+              class="intro-input"
+              contenteditable="plaintext-only"
+              role="textbox"
+              aria-label="Edit animated status"
+              aria-multiline="true"
+              spellcheck="true"
+              >[Thinking...]</span
+            >
+          </div>
+        {% endif %}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}

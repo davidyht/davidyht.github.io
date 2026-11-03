@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   target.addEventListener("input", stopStatus, { once: true });
   window.addEventListener("pagehide", stopStatus, { once: true });
 
-  // Keep the fixed greeting outside the editable region, including select-all/delete.
+  // Clicking beside the status places the cursor at the end of its editable text.
   container.addEventListener("click", (event) => {
     if (!target.contains(event.target)) {
       target.focus();

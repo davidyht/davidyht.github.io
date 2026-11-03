@@ -35,11 +35,6 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-<div class="intro-typewriter" data-intro-editor>
-  <span class="intro-greeting">Hi, I am Huitao.</span>
-  <span class="intro-input" contenteditable="plaintext-only" role="textbox" aria-label="Continue the greeting" aria-multiline="true" spellcheck="true">[Thinking...]</span>
-</div>
-
 I study foundation models, focusing on interpreting their behavior through theory and controlled experiments. I aim to understand how intelligence emerges and scales in learning systems, and use these insights to develop efficient algorithms that generalize. I am also passionate about topics in reinforcement learning and probability.
 
 I am currently a Master's student in Statistics at UCLA.
